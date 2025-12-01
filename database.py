@@ -8,19 +8,28 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Parámetros de conexión
+##LOCAL##
+# Parámetros de conexión de forma local con un BackEnd en un entorno virtual (revisar .env)
 DB_HOST = os.getenv('DB_HOST', default=None)
-#DB_PORT_LOCAL = os.getenv('DB_PORT_LOCAL', default=None)  # COMENTAMOS ESTA LÍNEA AL CONECTAR MEDIANTE LOS CONTENEDORES
+DB_PORT_LOCAL = os.getenv('DB_PORT_LOCAL', default=None)  # COMENTAMOS ESTA LÍNEA AL CONECTAR MEDIANTE LOS CONTENEDORES
 DB_USER = os.getenv('DB_USER', default=None)
 DB_PASSWORD = os.getenv('DB_PASSWORD', default=None)
 DB_NAME = os.getenv('DB_NAME', default=None)
 DB_DIALECT = os.getenv('DB_DIALECT', default=None)
-
-# URL de conexión de SQLAlchemy
 DATABASE_URL = (
-    #f"{DB_DIALECT}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT_LOCAL}/{DB_NAME}"  # COMENTAMOS ESTA LÍNEA AL CONECTAR MEDIANTE LOS CONTENEDORES
-    f"{DB_DIALECT}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"  # APLICAMOS ESTA LÍNEA AL CONECTAR MEDIANTE LOS CONTENEDORES
+    f"{DB_DIALECT}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT_LOCAL}/{DB_NAME}"
 )
+
+##DOCKER##
+# Parámetros de conexión con contenedor BackEnd (revisar .env)
+# DB_HOST = os.getenv('DB_HOST', default=None)
+# DB_USER = os.getenv('DB_USER', default=None)
+# DB_PASSWORD = os.getenv('DB_PASSWORD', default=None)
+# DB_NAME = os.getenv('DB_NAME', default=None)
+# DB_DIALECT = os.getenv('DB_DIALECT', default=None)
+# DATABASE_URL = (
+#     f"{DB_DIALECT}://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
+# )
 
 # Intentar crear el motor de SQLAlchemy con reintentos
 max_retries = 5

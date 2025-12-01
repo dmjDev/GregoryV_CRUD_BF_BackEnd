@@ -13,8 +13,10 @@ app = FastAPI()
 
 #ORIGENES PERMITIDOS FRONTEND #############################
 origin = [
-    #'http://localhost:3000' # damos acceso a nuestro BackEnd únicamente desde esta URL FrontEnd 
-    'http://172.18.0.4:3000' # UNA VEZ LOS TRES CONTENEDORES CONECTADOS DESDE NUESTRA RED DOCKER SE ASIGNA A NUESTRO BACKEND LA IP DE NUESTRO FORNTEND
+    ##LOCAL##
+    'http://localhost:3000' # damos acceso a nuestro BackEnd únicamente desde esta URL FrontEnd local
+    ##DOCKER##
+    #'http://172.18.0.4:3000' # UNA VEZ LOS TRES CONTENEDORES CONECTADOS DESDE NUESTRA RED DOCKER SE ASIGNA A NUESTRO BACKEND LA IP DE NUESTRO FORNTEND
     #'*' # PARA DARA ACCESO ACUALQUIR IP PUBLICA
 ]
 app.add_middleware(
